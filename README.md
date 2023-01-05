@@ -86,6 +86,7 @@ client.on('interactionCreate', (interaction) => {
               duration: duration,
               prize: prize,
               winnerCount: winnerCount,
+              hostedby: interaction.member.id
             })
             .then((data) => {
                 console.log(data); // {...} (messageId, end date and more)
@@ -98,14 +99,18 @@ client.on('interactionCreate', (interaction) => {
 -   **options.duration**: the giveaway duration.
 -   **options.prize**: the giveaway prize.
 -   **options.winnerCount**: the number of giveaway winners.
--   **[and many other optional parameters to customize the giveaway - read documentation](https://discord-giveaways.js.org/global.html#GiveawayStartOptions)**
+-   **options.channel**: the giveaway channel.
+-   **options.hostedby**: the owner hosting of giveaway.
 
 This allows you to start a new giveaway. Once the `start()` function is called, the giveaway starts, and you only have to observe the result, the package does the rest!
 
 <a href="https://zupimages.net/viewer.php?id=23/01/9hna.jpg">
     <img src="https://zupimages.net/up/23/01/9hna.jpg"/>
 </a>
+<a href="https://zupimages.net/viewer.php?id=23/01/dxlv.jpg">
+    <img src="https://zupimages.net/up/23/01/dxlv.jpg"/>
+</a>
 
 #### ⚠ ATTENTION!
 
-The command examples below (reroll, edit delete, end) can be executed on any server your bot is a member of if a person has the `prize` or the `messageId` of a giveaway. To prevent abuse we recommend to check if the `prize` or the `messageId` that was provided by the command user is for a giveaway on the same server, if it is not, then cancel the command execution.
+The command examples below (reroll, edit, delete, end) can be executed on any server your bot is a member of if a person has the `prize` or the `messageId` of a giveaway. To prevent abuse we recommend to check if the `prize` or the `messageId` that was provided by the command user is for a giveaway on the same server, if it is not, then cancel the command execution.
