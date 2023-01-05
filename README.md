@@ -17,9 +17,9 @@ Advance discord giveaways system with Support Slash/Message support
 # Installation
 
 ```cli
-npm i git+https://github.com/JohnDavid30/mocy-giveaways
+npm i git+https://github.com/JohnDavid30/Mocy-Giveaways
 ------ or ---------------------
-yarn add git+https://github.com/JohnDavid30/mocy-giveaways
+yarn add git+https://github.com/JohnDavid30/Mocy-Giveaways
 ```
 
 # Setup Giveaway
