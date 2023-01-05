@@ -180,11 +180,12 @@ class GiveawaySystem extends EventEmitter {
               interaction.message.edit({
                 embeds: [
                   EmbedBuilder.from(embeds).setFooter({
-                    text: `${entry} Users Joined`,
+                    text: `${entry} Users Joined`,}),
+                    ],
                     components: [Enter.setDisabled(true)],
                     // iconURL: interaction.guild.iconURL(),
-                  }),
-                ],
+                  //}),
+                //],
               });
             }
             let gData = createGiveaway(data);
