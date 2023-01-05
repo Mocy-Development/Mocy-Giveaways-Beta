@@ -2,6 +2,18 @@
 
 Advance discord giveaways system with Support Slash/Message support
 
+## Features
+
+-   ⏱️ Easy to use!
+-   🔄 Automatic restart after bot crash!
+-   🇫🇷 Support for translations: adapt the strings for your own language!
+-   📁 Support for all databases! (default is json)
+-   ⚙️ Very customizable! (prize, duration, winners...)
+-   🚀 Super powerful: start, edit, reroll, end, delete and pause giveaways!
+-   💥 Events: GiveawayReady, GiveawayStarted, GiveawayWinner, GiveawayRerolled, NoWinner, InvalidGiveaway, UserJoinGiveaway, UserLeftGiveaway
+-   🕸️ Support for shards! (Coming Soon...)
+-   and much more!
+
 # Installation
 
 ```cli
@@ -195,6 +207,45 @@ client.on('interactionCreate', (interaction) => {
 ```
 
 -   **noWinnerMessage**: Sent in the channel if there is no valid winner for the giveaway.
+## Manager Events
+
+```js
+manager.on("GiveawayReady", (name) => {
+  console.log(`${name} is Ready`);
+});
+manager.on("GiveawayStarted", (message, giveaway) => {
+  // console.log("GiveawayStarted");
+  message.reply(`Giveaway Started`);
+});
+manager.on("GiveawayWinner", (message, giveaway) => {
+  // console.log("GiveawayWinner");
+  let Gwinners = giveaway.winners.map((winner) => `<@${winner.userID}>`);
+  message.channel.send(
+    `${Gwinners} Won The \`${giveaway.prize}\` Giveaway Prize. Hosted By <@${giveaway.hostedBy}>`
+  );
+
+  giveaway.winners.map(async (user) => {
+    const u = await message.guild.members.fetch(user.userID);
+    u.send(`You Won The Giveaway ${message.url}`);
+  });
+});
+manager.on("GiveawayRerolled", (message, giveaway) => {
+  // console.log("GiveawayRerolled");
+  message.reply(`\`${giveaway.prize}\` Giveaway Rerolled`);
+});
+manager.on("NoWinner", (message, giveaway) => {
+  message.reply(`No One Won ${giveaway.prize}`);
+});
+manager.on("InvalidGiveaway", (member, giveaway) => {
+  member.send(`You are Joining in Ended Giveaway`);
+});
+manager.on("UserJoinGiveaway", (member, giveaway) => {
+  member.send(`You Joined ${giveaway.prize} Giveaway`);
+});
+manager.on("UserLeftGiveaway", (member, giveaway) => {
+  member.send(`You Left ${giveaway.prize} Giveaway`);
+});
+```
 # Bugs, glitches and issues
 
 If you encounter any problems feel free to open an issue in our <a href="https://github.com/JohnDavid30/mocy-giveaways/issues">GitHub repository</a> or join the [Discord server](https://discord.gg/rKtCW2S63Y).
