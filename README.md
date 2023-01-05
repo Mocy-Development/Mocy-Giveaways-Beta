@@ -196,7 +196,7 @@ client.on('interactionCreate', (interaction) => {
     if (interaction.isChatInputCommand() && interaction.commandName === 'end') {
         const messageId = interaction.options.getString('message_id');
         client.giveawaysManager
-            .end(messageId)
+            .getWinner(messageId)
             .then(() => {
                 interaction.reply('Success! Giveaway ended!');
             })
