@@ -175,7 +175,7 @@ class GiveawaySystem extends EventEmitter {
               const Enter = new ButtonBuilder()
   .setCustomId("enter")
   .setStyle(ButtonStyle.Secondary)
-  .setLabel(`${entry}`)
+  .setLabel(`Entered Users: ${entry}`)
               let embeds = interaction.message.embeds[0];
               interaction.message.edit({
                 embeds: [
