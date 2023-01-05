@@ -63,3 +63,49 @@ client.on('ready', () => {
 
 client.login(process.env.DISCORD_BOT_TOKEN);
 ```
+After that, giveaways that are not yet completed will start to be updated again and new giveaways can be started.
+You can pass an options object to customize the giveaways. Here is a list of them:
+
+-   **client**: the discord client (your discord bot instance).
+### Start a giveaway
+
+```js
+client.on('interactionCreate', (interaction) => {
+
+    if (interaction.isChatInputCommand() && interaction.commandName === 'start') {
+        // /start 2d 1 Awesome prize!
+        // Will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
+
+        const duration = interaction.options.getString('duration');
+        const winnerCount = interaction.options.getInteger('winners');
+        const prize = interaction.options.getString('prize');
+
+        client.giveawaysManager
+            .start(interaction, {
+              channel: channel,
+              duration: duration,
+              prize: prize,
+              winnerCount: winnerCount,
+            })
+            .then((data) => {
+                console.log(data); // {...} (messageId, end date and more)
+            });
+        // And the giveaway has started!
+    }
+});
+```
+
+-   **options.duration**: the giveaway duration.
+-   **options.prize**: the giveaway prize.
+-   **options.winnerCount**: the number of giveaway winners.
+-   **[and many other optional parameters to customize the giveaway - read documentation](https://discord-giveaways.js.org/global.html#GiveawayStartOptions)**
+
+This allows you to start a new giveaway. Once the `start()` function is called, the giveaway starts, and you only have to observe the result, the package does the rest!
+
+<a href="https://zupimages.net/viewer.php?id=23/01/9hna.jpg">
+    <img src="https://zupimages.net/up/23/01/9hna.jpg"/>
+</a>
+
+#### ⚠ ATTENTION!
+
+The command examples below (reroll, edit delete, end) can be executed on any server your bot is a member of if a person has the `prize` or the `messageId` of a giveaway. To prevent abuse we recommend to check if the `prize` or the `messageId` that was provided by the command user is for a giveaway on the same server, if it is not, then cancel the command execution.
