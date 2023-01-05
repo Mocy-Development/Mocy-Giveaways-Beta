@@ -154,3 +154,44 @@ client.on('interactionCreate', (interaction) => {
 
 -   **options.winCount**: the new number of winners.
 -   **options.prize**: the new prize.
+### Delete a giveaway
+
+```js
+client.on('interactionCreate', (interaction) => {
+    if (interaction.isChatInputCommand() && interaction.commandName === 'delete') {
+        const messageId = interaction.options.getString('message_id');
+        client.giveawaysManager
+            .delete(messageId)
+            .then(() => {
+                interaction.reply('Success! Giveaway deleted!');
+            })
+            .catch((err) => {
+                interaction.reply(`An error has occurred, please check and try again.\n\`${err}\``);
+            });
+    }
+});
+```
+
+-   **doNotDeleteMessage**: whether the giveaway message shouldn't be deleted.
+
+⚠️ **Note**: when you use the delete function, the giveaway data and the message of the giveaway are deleted (by default). You cannot restore a giveaway once you have deleted it!
+
+### End a giveaway
+
+```js
+client.on('interactionCreate', (interaction) => {
+    if (interaction.isChatInputCommand() && interaction.commandName === 'end') {
+        const messageId = interaction.options.getString('message_id');
+        client.giveawaysManager
+            .end(messageId)
+            .then(() => {
+                interaction.reply('Success! Giveaway ended!');
+            })
+            .catch((err) => {
+                interaction.reply(`An error has occurred, please check and try again.\n\`${err}\``);
+            });
+    }
+});
+```
+
+-   **noWinnerMessage**: Sent in the channel if there is no valid winner for the giveaway.
