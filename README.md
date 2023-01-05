@@ -131,3 +131,27 @@ client.on('interactionCreate', (interaction) => {
     }
 });
 ```
+### Edit a giveaway
+
+```js
+client.on('interactionCreate', (interaction) => {
+    if (interaction.isChatInputCommand() && interaction.commandName === 'edit') {
+        const messageId = interaction.options.getString('message_id');
+        client.giveawaysManager
+            .edit(messageId, {
+                addTime: 5000,
+                newWinnerCount: 3,
+                newPrize: 'New Prize!'
+            })
+            .then(() => {
+                interaction.reply('Success! Giveaway updated!');
+            })
+            .catch((err) => {
+                interaction.reply(`An error has occurred, please check and try again.\n\`${err}\``);
+            });
+    }
+});
+```
+
+-   **options.newWinnerCount**: the new number of winners.
+-   **options.newPrize**: the new prize. You can [access giveaway properties](https://github.com/Androz2091/discord-giveaways#access-giveaway-properties-in-messages).
