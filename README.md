@@ -134,7 +134,7 @@ client.on('interactionCreate', (interaction) => {
     if (interaction.isChatInputCommand() && interaction.commandName === 'reroll') {
         const messageId = interaction.options.getString('message_id');
         client.giveawaysManager
-            .reroll(messageId)
+            .getWinner(messageId)
             .then(() => {
                 interaction.reply('Success! Giveaway rerolled!');
             })
