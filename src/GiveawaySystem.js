@@ -181,7 +181,7 @@ class GiveawaySystem extends EventEmitter {
                 embeds: [
                   EmbedBuilder.from(embeds).setFooter({
                     text: `${entry} Users Joined`,
-                    components: [Enter],
+                    components: [Enter.setDisabled(true)],
                     // iconURL: interaction.guild.iconURL(),
                   }),
                 ],
