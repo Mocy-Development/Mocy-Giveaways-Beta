@@ -139,9 +139,8 @@ client.on('interactionCreate', (interaction) => {
         const messageId = interaction.options.getString('message_id');
         client.giveawaysManager
             .edit(messageId, {
-                addTime: 5000,
-                newWinnerCount: 3,
-                newPrize: 'New Prize!'
+                winCount: 3,
+                prize: 'New Prize!'
             })
             .then(() => {
                 interaction.reply('Success! Giveaway updated!');
@@ -153,5 +152,5 @@ client.on('interactionCreate', (interaction) => {
 });
 ```
 
--   **options.newWinnerCount**: the new number of winners.
--   **options.newPrize**: the new prize. You can [access giveaway properties](https://github.com/Androz2091/discord-giveaways#access-giveaway-properties-in-messages).
+-   **options.winCount**: the new number of winners.
+-   **options.prize**: the new prize.
