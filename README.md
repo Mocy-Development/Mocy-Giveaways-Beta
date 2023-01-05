@@ -10,7 +10,7 @@ npm i git+https://github.com/JohnDavid30/mocy-giveaways
 yarn add git+https://github.com/JohnDavid30/mocy-giveaways
 ```
 
-# Setting up
+# Setup Giveaway
 
 ### Launch of the module
 
@@ -195,3 +195,6 @@ client.on('interactionCreate', (interaction) => {
 ```
 
 -   **noWinnerMessage**: Sent in the channel if there is no valid winner for the giveaway.
+# Bugs, glitches and issues
+
+If you encounter any problems feel free to open an issue in our <a href="https://github.com/JohnDavid30/mocy-giveaways/issues">GitHub repository</a> or join the [Discord server](https://discord.gg/rKtCW2S63Y).
