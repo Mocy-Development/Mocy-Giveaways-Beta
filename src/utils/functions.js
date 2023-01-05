@@ -35,10 +35,10 @@ async function fetchGCM(client, giveaways, messageId) {
   return obj;
 }
 
-async function editEmbed(message, giveawaydata, embed) {
-  let channel = message.guild.channels.cache.get(giveawaydata.channelId);
+async function editEmbed(message, data, embed) {
+  let channel = message.guild.channels.cache.get(data.channelId);
   if (!channel) return;
-  let msg = await channel.messages.fetch(giveawaydata.messageId);
+  let msg = await channel.messages.fetch(data.messageId);
   msg
     .edit({
       embeds: [embed],
