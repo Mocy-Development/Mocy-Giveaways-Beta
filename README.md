@@ -30,6 +30,7 @@ Required Discord Intents: `Guilds` and `GuildMessageReactions`.
 Optional Discord Privileged Intent for better performance: `GuildMembers`.
 
 ```js
+const GiveawaySystem = require('mocy-giveaways');
 const Discord = require('discord.js');
 const client = new Discord.Client({
     intents: [
@@ -210,14 +211,14 @@ client.on('interactionCreate', (interaction) => {
 ## Manager Events
 
 ```js
-manager.on("GiveawayReady", (name) => {
+client.giveawaysManager.on("GiveawayReady", (name) => {
   console.log(`${name} is Ready`);
 });
-manager.on("GiveawayStarted", (message, giveaway) => {
+client.giveawaysManager.on("GiveawayStarted", (message, giveaway) => {
   // console.log("GiveawayStarted");
   message.reply(`Giveaway Started`);
 });
-manager.on("GiveawayWinner", (message, giveaway) => {
+client.giveawaysManager.on("GiveawayWinner", (message, giveaway) => {
   // console.log("GiveawayWinner");
   let Gwinners = giveaway.winners.map((winner) => `<@${winner.userID}>`);
   message.channel.send(
@@ -229,20 +230,20 @@ manager.on("GiveawayWinner", (message, giveaway) => {
     u.send(`You Won The Giveaway ${message.url}`);
   });
 });
-manager.on("GiveawayRerolled", (message, giveaway) => {
+client.giveawaysManager.on("GiveawayRerolled", (message, giveaway) => {
   // console.log("GiveawayRerolled");
   message.reply(`\`${giveaway.prize}\` Giveaway Rerolled`);
 });
-manager.on("NoWinner", (message, giveaway) => {
+client.giveawaysManager.on("NoWinner", (message, giveaway) => {
   message.reply(`No One Won ${giveaway.prize}`);
 });
-manager.on("InvalidGiveaway", (member, giveaway) => {
+client.giveawaysManager.on("InvalidGiveaway", (member, giveaway) => {
   member.send(`You are Joining in Ended Giveaway`);
 });
-manager.on("UserJoinGiveaway", (member, giveaway) => {
+client.giveawaysManager.on("UserJoinGiveaway", (member, giveaway) => {
   member.send(`You Joined ${giveaway.prize} Giveaway`);
 });
-manager.on("UserLeftGiveaway", (member, giveaway) => {
+client.giveawaysManager.on("UserLeftGiveaway", (member, giveaway) => {
   member.send(`You Left ${giveaway.prize} Giveaway`);
 });
 ```
