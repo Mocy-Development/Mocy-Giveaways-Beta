@@ -296,18 +296,13 @@ class GiveawaySystem extends EventEmitter {
     // code
     const GiveawayEmbed = new EmbedBuilder()
       .setColor(this.embedColor)
-      .setTitle(`Mocy Giveaways`)
+      .setTitle(`${giveaway.prize}`)
       .setTimestamp(Date.now())
       .setDescription(`Click on Join Button To Enter in Giveaway`)
       .setFooter({
         text: `0 Users Joined`,
       })
       .addFields([
-        {
-          name: `Prize`,
-          value: `> \`${giveaway.prize}\``,
-          inline: true,
-        },
         {
           name: `Ends In`,
           value: `> <t:${giveaway.endTime}:R>`,
@@ -336,7 +331,7 @@ class GiveawaySystem extends EventEmitter {
     // code
     const GiveawayEmbed = new EmbedBuilder()
       .setColor(this.embedColor)
-      .setTitle(`Mocy Giveaways`)
+      .setTitle(`${giveaway.prize}`)
       .setTimestamp(Date.now())
       .setDescription(`Giveaway Ended , No One Joined`)
       .setFooter({
@@ -353,11 +348,6 @@ class GiveawaySystem extends EventEmitter {
           value: `> <@${giveaway.hostedBy}>`,
           inline: true,
         },
-        {
-          name: `Prize`,
-          value: `> \`${giveaway.prize}\``,
-          inline: true,
-        },
       ]);
     return GiveawayEmbed;
   }
@@ -370,7 +360,7 @@ class GiveawaySystem extends EventEmitter {
     // code
     const GiveawayEmbed = new EmbedBuilder()
       .setColor(this.embedColor)
-      .setTitle(`Mocy Giveaways`)
+      .setTitle(`${giveaway.prize}`)
       .setTimestamp(Date.now())
       .setDescription(
         `Giveaway Ended , ${giveaway.winners
@@ -389,11 +379,6 @@ class GiveawaySystem extends EventEmitter {
         {
           name: `Hosted By`,
           value: `> <@${giveaway.hostedBy}>`,
-          inline: true,
-        },
-        {
-          name: `Prize`,
-          value: `> \`${giveaway.prize}\``,
           inline: true,
         },
       ]);
