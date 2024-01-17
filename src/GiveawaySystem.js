@@ -172,17 +172,13 @@ class GiveawaySystem extends EventEmitter {
             });
             if (!data) return;
             function updateentry(entry) {
-              const Enter = new ButtonBuilder()
-  .setCustomId("enter")
-  .setStyle(ButtonStyle.Secondary)
-  .setLabel(`Entered Users: ${entry}`)
               let embeds = interaction.message.embeds[0];
               interaction.message.edit({
                 embeds: [
                   EmbedBuilder.from(embeds).setFooter({
                     text: `${entry} Users Joined`,}),
                     ],
-                    components: [new ActionRowBuilder().addComponents([joinBtn, Enter.setDisabled(true)])],
+                    components: [new ActionRowBuilder().addComponents([joinBtn])],
                     // iconURL: interaction.guild.iconURL(),
                   //}),
                 //],
