@@ -15,8 +15,8 @@ const mongoose = require("mongoose");
 
 const joinBtn = new ButtonBuilder()
   .setCustomId("join_btn")
-  .setStyle(ButtonStyle.Secondary)
-  .setLabel("Enter")
+  .setStyle(ButtonStyle.Primary)
+  .setLabel("🎉 Join Giveaway!")
 
 class GiveawaySystem extends EventEmitter {
   /**
